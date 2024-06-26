@@ -36,13 +36,19 @@ const StyledTitle = styled.div`
 type CountryCardProps = {
     country: CountryData;
     onCountryClick: (country: CountryData) => void;
-    selected: boolean;
+    selected?: boolean;
 }
 
 const CountryCard: React.FC<CountryCardProps> = ({ country, onCountryClick, selected }) => {
 
+    const handleClick = () => {
+        if (onCountryClick) {
+            onCountryClick(country);
+        }
+    };
+
     return (
-        <StyledCard>
+        <StyledCard onClick={handleClick} selected={selected}>
             <StyledFlagImg>
                 <img src={country.flags.png} alt={`국기 이미지`} />
             </StyledFlagImg>
