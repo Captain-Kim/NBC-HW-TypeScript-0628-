@@ -1,13 +1,13 @@
 import { CountryData } from '../types/countryTypes';
 
-interface CountryCardProps {
+type CountryCardProps = {
     country: CountryData;
-    onCountryClick?: (country: CountryData) => void;
-    selected?: boolean;
-  }
+    onCountryClick: (country: CountryData) => void;
+    selected: boolean;
+}
 
 const CountryCard: React.FC<CountryCardProps> = ({ country, onCountryClick, selected }) => {
-    return(
+    return (
         <>
         </>
     )
