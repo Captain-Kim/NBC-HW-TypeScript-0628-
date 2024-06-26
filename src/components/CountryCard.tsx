@@ -41,7 +41,7 @@ type CountryCardProps = {
 
 const CountryCard: React.FC<CountryCardProps> = ({ country, onCountryClick, selected }) => {
 
-    const handleClick = () => {
+    const handleClick = ():void => {
         if (onCountryClick) {
             onCountryClick(country);
         }
