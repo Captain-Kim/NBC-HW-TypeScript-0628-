@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import CountryCard from './CountryCard';
+import useCountryQuery from '../hooks/useCountryQuery';
 
 const CardSection = styled.div`
   display: flex;
@@ -8,6 +9,10 @@ const CardSection = styled.div`
 `;
 
 const CountryList = () => {
+    const { data: countries, isPending, isError } = useCountryQuery();
+
+    if (isPending) return <div>로딩 중</div>;
+    if (isError) return <div>에러</div>;
 
     return (
         <>
