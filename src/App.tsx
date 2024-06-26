@@ -1,10 +1,13 @@
 import CountryList from './components/CountryList';
+import Layout from './components/Layout';
 
 function App() {
 
   return (
     <>
-          <CountryList />
+      <Layout>
+        <CountryList />
+      </Layout>
     </>
   )
 }
