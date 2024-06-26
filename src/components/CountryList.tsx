@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import CountryCard from './CountryCard';
 import useCountryQuery from '../hooks/useCountryQuery';
 
-const CardSection = styled.div`
+const StyledCardSection = styled.div`
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
@@ -37,16 +37,20 @@ const CountryList = () => {
 
     return (
         <>
-            <h1>내가 고른 카드</h1>
-            <CardSection>
-                <CountryCard />
-            </CardSection>
-            <h1>국가 목록</h1>
-            <CardSection>
-                <CountryCard />
-            </CardSection>
+            <h1>내가 좋아하는 나라들</h1>
+            <StyledCardSection>
+                {favoriteCountries.map((country) => (
+                    <CountryCard key={country.cca3} country={country} onCountryClick={removeFavoriteCountry} selected />
+                ))}
+            </StyledCardSection>
+            <h1>여기서 나라를 골라 보세요</h1>
+            <StyledCardSection>
+                {allCountries.map((country) => (
+                    <CountryCard key={country.cca3} country={country} onCountryClick={addFavoriteCountry} />
+                ))}
+            </StyledCardSection>
         </>
-    )
+    );
 }
 
 export default CountryList;
