@@ -48,7 +48,7 @@ const CountryCard: React.FC<CountryCardProps> = ({ country, onCountryClick, sele
     };
 
     return (
-        <StyledCard onClick={handleClick} selected={selected}>
+        <StyledCard onClick={handleClick}>
             <StyledFlagImg>
                 <img src={country.flags.png} alt={`국기 이미지`} />
             </StyledFlagImg>
