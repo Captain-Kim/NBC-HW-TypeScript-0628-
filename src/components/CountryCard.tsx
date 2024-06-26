@@ -47,7 +47,7 @@ const CountryCard: React.FC<CountryCardProps> = ({ country, onCountryClick, sele
                 <img src={country.flags.png} alt={`국기 이미지`} />
             </StyledFlagImg>
             <StyledTitle>{country.name.common}</StyledTitle>
-            <p>{country.capital}</p>
+            <p>{country.capital?.[0] ?? '수도 정보가 없습니다'}</p>
         </StyledCard>
     );
 
