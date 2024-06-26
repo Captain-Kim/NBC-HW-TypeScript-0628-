@@ -1,5 +1,5 @@
 import { CountryData } from '../types/countryTypes';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 const StyledCard = styled.div<{ selected?: boolean }>`
   border: 1px solid black;
@@ -11,6 +11,19 @@ const StyledCard = styled.div<{ selected?: boolean }>`
   flex-direction: column;
   align-items: center;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+  &:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  }
+
+  ${(props) =>
+        props.selected &&
+        css`
+      border-color: blue;
+    `}
 `;
 
 const StyledFlagImg = styled.div`
@@ -25,6 +38,7 @@ const StyledFlagImg = styled.div`
 
 const StyledTitle = styled.div`
   font-size: 25px;
+  text-align: center;
   font-weight: 800;
   margin-top: 10px;
   white-space: nowrap;
@@ -41,14 +55,14 @@ type CountryCardProps = {
 
 const CountryCard: React.FC<CountryCardProps> = ({ country, onCountryClick, selected }) => {
 
-    const handleClick = ():void => {
+    const handleClick = (): void => {
         if (onCountryClick) {
             onCountryClick(country);
         }
     };
 
     return (
-        <StyledCard onClick={handleClick}>
+        <StyledCard onClick={handleClick} selected={selected}>
             <StyledFlagImg>
                 <img src={country.flags.png} alt={`국기 이미지`} />
             </StyledFlagImg>
